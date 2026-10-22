@@ -1,24 +1,5 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
-// ============================================================================
-class MiHebra4 extends Thread {
-    // ============================================================================
-    int           numIters;
-    AtomicInteger c;
-
-    // --------------------------------------------------------------------------
-    public MiHebra4( int numIters, AtomicInteger c ) {
-        this.numIters = numIters;
-        this.c        = c;
-    }
-
-    // --------------------------------------------------------------------------
-    public void run() {
-        for( int i = 0; i < numIters; i++ ) {
-            c.incrementAndGet();
-        }
-    }
-}
 
 // ============================================================================
 class EjemploAtomic {
@@ -72,5 +53,25 @@ class EjemploAtomic {
         tt = ( ( double ) ( t2 - t1 ) ) / 1.0e9;
         System.out.println( "Total de incrementos: " + c.get() );
         System.out.println( "Tiempo transcurrido en segs.: " + tt );
+    }
+}
+
+// ============================================================================
+class MiHebra4 extends Thread {
+    // ============================================================================
+    int           numIters;
+    AtomicInteger c;
+
+    // --------------------------------------------------------------------------
+    public MiHebra4( int numIters, AtomicInteger c ) {
+        this.numIters = numIters;
+        this.c        = c;
+    }
+
+    // --------------------------------------------------------------------------
+    public void run() {
+        for( int i = 0; i < numIters; i++ ) {
+            c.incrementAndGet();
+        }
     }
 }

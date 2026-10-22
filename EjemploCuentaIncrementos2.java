@@ -1,39 +1,3 @@
-// ============================================================================
-class CuentaIncrementos2 {
-    // ============================================================================
-    volatile int numIncrementos = 0;
-    
-    // --------------------------------------------------------------------------
-    void incrementaNumIncrementos() {
-        numIncrementos++;
-    }
-    
-    // --------------------------------------------------------------------------
-    int dameNumIncrementos() {
-        return( numIncrementos );
-    }
-}
-
-
-// ============================================================================
-class MiHebra2 extends Thread {
-    // ============================================================================
-    int                numIters;
-    CuentaIncrementos2 c;
-    
-    // --------------------------------------------------------------------------
-    public MiHebra2(int numIters, CuentaIncrementos2 c ) {
-        this.numIters = numIters;
-        this.c        = c;
-    }
-    
-    // --------------------------------------------------------------------------
-    public void run() {
-        for( int i = 0; i < numIters; i++ ) {
-            c.incrementaNumIncrementos();
-        }
-    }
-}
 
 // ============================================================================
 class EjemploCuentaIncrementos2 {
@@ -90,3 +54,39 @@ class EjemploCuentaIncrementos2 {
     }
 }
 
+// ============================================================================
+class CuentaIncrementos2 {
+    // ============================================================================
+    volatile int numIncrementos = 0;
+
+    // --------------------------------------------------------------------------
+    void incrementaNumIncrementos() {
+        numIncrementos++;
+    }
+
+    // --------------------------------------------------------------------------
+    int dameNumIncrementos() {
+        return( numIncrementos );
+    }
+}
+
+
+// ============================================================================
+class MiHebra2 extends Thread {
+    // ============================================================================
+    int                numIters;
+    CuentaIncrementos2 c;
+
+    // --------------------------------------------------------------------------
+    public MiHebra2(int numIters, CuentaIncrementos2 c ) {
+        this.numIters = numIters;
+        this.c        = c;
+    }
+
+    // --------------------------------------------------------------------------
+    public void run() {
+        for( int i = 0; i < numIters; i++ ) {
+            c.incrementaNumIncrementos();
+        }
+    }
+}

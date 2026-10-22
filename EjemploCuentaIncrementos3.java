@@ -1,39 +1,3 @@
-// ============================================================================
-class CuentaIncrementos3 {
-    // ============================================================================
-    int numIncrementos = 0;
-    
-    // --------------------------------------------------------------------------
-    synchronized void incrementaNumIncrementos() {
-        numIncrementos++;
-    }
-    
-    // --------------------------------------------------------------------------
-    synchronized int dameNumIncrementos() {
-        return( numIncrementos );
-    }
-}
-
-
-// ============================================================================
-class MiHebra3 extends Thread {
-    // ============================================================================
-    int                numIters;
-    CuentaIncrementos3 c;
-    
-    // --------------------------------------------------------------------------
-    public MiHebra3(int numIters, CuentaIncrementos3 c ) {
-        this.numIters = numIters;
-        this.c        = c;
-    }
-    
-    // --------------------------------------------------------------------------
-    public void run() {
-        for( int i = 0; i < numIters; i++ ) {
-            c.incrementaNumIncrementos();
-        }
-    }
-}
 
 // ============================================================================
 class EjemploCuentaIncrementos3 {
@@ -87,6 +51,43 @@ class EjemploCuentaIncrementos3 {
         tt = ( ( double ) ( t2 - t1 ) ) / 1.0e9;
         System.out.println( "Total de incrementos: " + c.dameNumIncrementos() );
         System.out.println( "Tiempo transcurrido en segs.: " + tt );
+    }
+}
+
+// ============================================================================
+class CuentaIncrementos3 {
+    // ============================================================================
+    int numIncrementos = 0;
+
+    // --------------------------------------------------------------------------
+    synchronized void incrementaNumIncrementos() {
+        numIncrementos++;
+    }
+
+    // --------------------------------------------------------------------------
+    synchronized int dameNumIncrementos() {
+        return( numIncrementos );
+    }
+}
+
+
+// ============================================================================
+class MiHebra3 extends Thread {
+    // ============================================================================
+    int                numIters;
+    CuentaIncrementos3 c;
+
+    // --------------------------------------------------------------------------
+    public MiHebra3(int numIters, CuentaIncrementos3 c ) {
+        this.numIters = numIters;
+        this.c        = c;
+    }
+
+    // --------------------------------------------------------------------------
+    public void run() {
+        for( int i = 0; i < numIters; i++ ) {
+            c.incrementaNumIncrementos();
+        }
     }
 }
 
