@@ -19,10 +19,10 @@ class CuentaIncrementos {
 class MiHebra extends Thread {
     // ============================================================================
     int                numIters;
-    CuentaIncrementos2 c;
+    CuentaIncrementos c;
     
     // --------------------------------------------------------------------------
-    public MiHebra( int numIters, CuentaIncrementos2 c ) {
+    public MiHebra( int numIters, CuentaIncrementos c ) {
         this.numIters = numIters;
         this.c        = c;
     }
@@ -71,7 +71,7 @@ class EjemploCuentaIncrementos {
         System.out.println( "Creando y arrancando " + numHebras + " hebras." );
         t1 = System.nanoTime();
         MiHebra v[] = new MiHebra[ numHebras ];
-        CuentaIncrementos2 c = new CuentaIncrementos2();
+        CuentaIncrementos c = new CuentaIncrementos();
         for( int i = 0; i < numHebras; i++ ) {
             v[ i ] = new MiHebra( numIters, c );
             v[ i ].start();
